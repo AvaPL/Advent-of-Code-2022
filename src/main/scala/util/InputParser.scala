@@ -3,8 +3,13 @@ package util
 
 import scala.util.matching.Regex
 
-trait InputParser[T] {
-  def parse(string: String): T
+abstract class InputParser[T](day: Int) {
+  protected def parse(string: String): T
+
+  lazy val parsedInput: T = {
+    val inputString = FileReader.readUnsafe(s"input/day$day/puzzle.txt")
+    parse(inputString)
+  }
 }
 
 object InputParser {
