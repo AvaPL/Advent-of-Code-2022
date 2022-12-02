@@ -3,8 +3,6 @@ package day2.puzzle2
 
 import day2.{Paper, Rock, Scissors, Shape}
 
-import java.awt.print.{Paper => _}
-
 object Puzzle2 extends App {
   val strategyGuide = Puzzle2InputParser.parsedInput
   val result = strategyGuide.foldLeft(0) { case (score, (opponentShape, roundResult)) =>
