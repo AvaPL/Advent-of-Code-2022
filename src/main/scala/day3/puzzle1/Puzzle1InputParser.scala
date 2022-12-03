@@ -6,7 +6,7 @@ import util.InputParser._
 
 object Puzzle1InputParser extends InputParser[Seq[Rucksack]](day = 3) {
 
-  override protected def parse(string: String): Seq[(Compartment, Compartment)] =
+  override protected def parse(string: String): Seq[Rucksack] =
     for {
       line <- string.splitLines
       (leftHalf, rightHalf) = splitInHalf(line)
