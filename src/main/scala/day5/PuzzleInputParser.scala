@@ -27,6 +27,6 @@ object PuzzleInputParser extends InputParser[(IndexedSeq[Stack[Crate]], Seq[Rear
   private def parseRearrangementSteps(rearrangementProcedureBlock: String) =
     for {
       rearrangementStepString <- rearrangementProcedureBlock.splitLines
-      rearrangementStepRegex(quantity, sourceStackIndex, targetStackIndex) = rearrangementStepString
-    } yield RearrangementStep(quantity.toInt, sourceStackIndex.toInt, targetStackIndex.toInt)
+      rearrangementStepRegex(quantity, sourceStackNumber, targetStackNumber) = rearrangementStepString
+    } yield RearrangementStep(quantity.toInt, sourceStackNumber.toInt, targetStackNumber.toInt)
 }
