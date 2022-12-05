@@ -9,5 +9,4 @@ package object day5 {
       sourceStackNumber: Int,
       targetStackNumber: Int
   )
-
 }
