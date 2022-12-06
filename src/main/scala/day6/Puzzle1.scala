@@ -4,10 +4,8 @@ package day6
 object Puzzle1 extends App {
   val signal = PuzzleInputParser.parsedInput
   val distinctCharactersCount = 4
-  var startOfPacketMarker = distinctCharactersCount - 1
-  signal.sliding(distinctCharactersCount).find { characters =>
-    startOfPacketMarker += 1
+  val result = signal.sliding(distinctCharactersCount).indexWhere { characters =>
     characters.distinct.length == distinctCharactersCount
-  }
-  println(startOfPacketMarker)
+  } + distinctCharactersCount
+  println(result)
 }
