@@ -22,7 +22,7 @@ package object day9 {
   private def moveRope(rope: Rope, motion: Motion) = {
     val nextHeadPosition = moveHead(rope.head, motion)
     rope.tail.foldLeft(Seq(nextHeadPosition)) { case (movedRope, segmentPosition) =>
-      val nextSegmentPosition = moveTailSegment(segmentPosition, movedRope.last)
+      val nextSegmentPosition = moveTailSegment(segmentPosition, nextParentSegmentPosition = movedRope.last)
       movedRope :+ nextSegmentPosition
     }
   }
