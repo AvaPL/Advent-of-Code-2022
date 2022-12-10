@@ -6,7 +6,15 @@ package object day10 {
   case object Noop extends Instruction
   case class AddX(value: Int) extends Instruction
 
-  def mapCycleToRegisterX(instructions: Seq[Instruction]): Map[Int, Int] =
+  def registerXValues(instructions: Seq[Instruction]): IndexedSeq[Int] = {
+    val cycleToRegisterX = mapCycleToRegisterX(instructions)
+    val totalCycles = cycleToRegisterX.keySet.max
+    (0 to totalCycles).map { cycle =>
+      cycleToRegisterX.getOrElse(cycle, cycleToRegisterX(cycle - 1))
+    }
+  }
+
+  private def mapCycleToRegisterX(instructions: Seq[Instruction]) =
     instructions
       .scanLeft((0, 1)) {
         case ((cycle, registerX), Noop)        => (cycle + 1, registerX)
