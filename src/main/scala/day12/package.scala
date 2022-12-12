@@ -4,7 +4,6 @@ package object day12 {
   type Row = Int
   type Column = Int
 
-  type Height = Char
   type HeightMap = IndexedSeq[IndexedSeq[Char]]
 
   type Marker = Char
