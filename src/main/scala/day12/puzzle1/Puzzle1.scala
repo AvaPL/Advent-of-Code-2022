@@ -8,7 +8,7 @@ object Puzzle1 extends App {
   val (startRow, startColumn) = markerRowColumn(heightMap, startMarker)
   val (endRow, endColumn) = markerRowColumn(heightMap, endMarker)
   val heightMapWithoutMarkers = removeMarkers(heightMap)
-  val dijkstra = new Puzzle1Dijkstra(heightMapWithoutMarkers)
+  val dijkstra = new UphillDijkstra(heightMapWithoutMarkers)
   val costs = dijkstra.costs(startRow, startColumn)
   val result = costs(endRow)(endColumn)
   println(result)

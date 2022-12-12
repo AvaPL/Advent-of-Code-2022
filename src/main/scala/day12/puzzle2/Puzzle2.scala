@@ -7,7 +7,7 @@ object Puzzle2 extends App {
   val heightMap = PuzzleInputParser.parsedInput
   val (endRow, endColumn) = markerRowColumn(heightMap, endMarker)
   val heightMapWithoutMarkers = removeMarkers(heightMap)
-  val dijkstra = new Puzzle2Dijkstra(heightMapWithoutMarkers)
+  val dijkstra = new DownhillDijkstra(heightMapWithoutMarkers)
   val costs = dijkstra.costs(endRow, endColumn)
   val result = lowestStartingPositionCost(costs)
   println(result)

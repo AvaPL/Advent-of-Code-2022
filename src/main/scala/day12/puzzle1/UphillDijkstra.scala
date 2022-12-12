@@ -3,7 +3,7 @@ package day12.puzzle1
 
 import day12.{Column, Dijkstra, HeightMap, Row}
 
-class Puzzle1Dijkstra(heightMap: HeightMap)
+class UphillDijkstra(heightMap: HeightMap)
     extends Dijkstra(
       rowsCount = heightMap.size,
       columnsCount = heightMap.head.size
