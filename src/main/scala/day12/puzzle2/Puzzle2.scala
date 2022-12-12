@@ -12,7 +12,7 @@ object Puzzle2 extends App {
   val result = lowestStartingPositionCost(costs)
   println(result)
 
-  private def lowestStartingPositionCost(costs: IndexedSeq[IndexedSeq[Cost]]) = {
+  private def lowestStartingPositionCost(costs: Costs) = {
     for {
       row <- heightMap.indices
       column <- heightMap.head.indices if heightMapWithoutMarkers(row)(column) == 'a'
