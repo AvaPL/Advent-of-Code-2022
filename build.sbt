@@ -7,6 +7,7 @@ lazy val root = (project in file("."))
     name := "Advent-of-Code-2022",
     idePackagePrefix := Some("io.github.avapl"),
     libraryDependencies ++= Seq(
-      "com.softwaremill.quicklens" %% "quicklens" % "1.9.0"
+      "com.softwaremill.quicklens" %% "quicklens" % "1.9.0",
+      "com.typesafe.play" %% "play-json" % "2.9.3"
     )
   )
