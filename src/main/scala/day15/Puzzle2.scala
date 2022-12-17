@@ -7,11 +7,11 @@ object Puzzle2 extends App {
   val (distressBeaconX, distressBeaconY) = LazyList
     .from(minXY)
     .map(y => (y, calculateCoveragesAtY(sensorToNearestBeacon)(y)))
-    .collect { case (y, Seq(coverageRange, _)) =>
+    .collectFirst { case (y, Seq(coverageRange, _)) =>
       val x = coverageRange.last + 1
       (x, y)
     }
-    .head
+    .get
   val result = distressBeaconX * 4_000_000L + distressBeaconY
   println(result)
 }
