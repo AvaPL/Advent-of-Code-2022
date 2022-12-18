@@ -1,17 +1,23 @@
 package io.github.avapl
 package day18
 
+import scala.annotation.tailrec
+
 object Puzzle2 extends App {
   val cubePositions = PuzzleInputParser.parsedInput
   val result = calculateVisibleSides(dropletSurroundingCubes) - surroundingCubeVisibleSides
   println(result)
 
-  private lazy val dropletSurroundingCubes = surroundingCube ++ Set
-    .unfold(surroundingCube) { surroundingCubes =>
-      val expansion = surroundingCubes.flatMap(expand).diff(surroundingCubes)
-      Option.when(expansion.nonEmpty)((expansion, surroundingCubes ++ expansion))
+  private lazy val dropletSurroundingCubes = {
+    @tailrec
+    def loop(cubes: Set[CubePosition]): Set[CubePosition] = {
+      val expansion = cubes.flatMap(expand).diff(cubes)
+      if (expansion.nonEmpty) loop(cubes ++ expansion)
+      else cubes
     }
-    .flatten
+
+    loop(surroundingCube)
+  }
 
   private lazy val surroundingCube = {
     Set(
