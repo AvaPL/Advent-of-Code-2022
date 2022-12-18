@@ -15,9 +15,9 @@ object Puzzle2 extends App {
   type JetIteratorIndex = Int
   type ShapesIteratorIndex = Int
   type ChamberState = (ChamberTop, JetIteratorIndex, ShapesIteratorIndex)
-  type StateHeight = Int
+  type Height = Int
   type ShapesCount = Int
-  val chamberStates = mutable.Map.empty[ChamberState, (StateHeight, ShapesCount)]
+  val chamberStates = mutable.Map.empty[ChamberState, (Height, ShapesCount)]
 
   var numberOfShapesUntilDuplication = -1
   var duplicatedSegmentHeight = 0
