@@ -19,10 +19,10 @@ object Puzzle2 extends App {
   type ShapesCount = Int
   val chamberStates = mutable.Map.empty[ChamberState, (Height, ShapesCount)]
 
-  var numberOfShapesUntilDuplication = -1
-  var duplicatedSegmentHeight = 0
-  var duplicatedSegmentShapesCount = 0
   var droppedShapes = 0
+  var numberOfShapesUntilDuplication = -1
+  var duplicatedSegmentShapesCount = 0
+  var duplicatedSegmentHeight = 0
 
   while (numberOfShapesUntilDuplication < 0) {
     val (shape, shapesIteratorIndex) = shapesIterator.next()
@@ -132,8 +132,8 @@ object Puzzle2 extends App {
     if (chamberStates.contains(state)) {
       numberOfShapesUntilDuplication = droppedShapes - 1
       val (stateHeight, stateShapesCount) = chamberStates(state)
-      duplicatedSegmentHeight = height - stateHeight
       duplicatedSegmentShapesCount = droppedShapes - stateShapesCount
+      duplicatedSegmentHeight = height - stateHeight
     } else if (droppedShapes > 1) // The first shape collides with the ground
       chamberStates(state) = (height, droppedShapes)
   }
