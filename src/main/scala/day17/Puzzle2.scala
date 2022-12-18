@@ -9,10 +9,8 @@ object Puzzle2 extends App {
   val shapesIterator = Iterator.continually(shapes.zipWithIndex).flatten
 
   val totalShapes = 1_000_000_000_000L
-  val shapeHeight = 4
 
   var chamber = Vector.empty[String]
-  val chamberTopHeight = 7
   type ChamberTop = Vector[String]
   type JetIteratorIndex = Int
   type ShapesIteratorIndex = Int

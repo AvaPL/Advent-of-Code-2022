@@ -27,7 +27,7 @@ object Puzzle1 extends App {
 
   private def padChamber(): Unit = {
     val topRockIndex = chamber.indexWhere(_.contains('#'))
-    val paddingLines = if (topRockIndex > 0) 7 - topRockIndex else 7
+    val paddingLines = if (topRockIndex > 0) chamberTopHeight - topRockIndex else chamberTopHeight
     chamber = Vector.fill(paddingLines)(".......") ++ chamber
   }
 
@@ -49,9 +49,9 @@ object Puzzle1 extends App {
     shape.map(_.head).contains('#')
 
   private def collidesWithChamber(shape: Shape, index: Int) = {
-    val collidesWithFloor = index + 4 > chamber.length
+    val collidesWithFloor = index + shapeHeight > chamber.length
     lazy val collidesWithTower = chamber
-      .slice(index, index + 4)
+      .slice(index, index + shapeHeight)
       .zip(shape)
       .flatMap { case (chamberLine, shapeLine) =>
         chamberLine.zip(shapeLine)

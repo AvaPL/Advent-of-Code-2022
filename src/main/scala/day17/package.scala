@@ -9,7 +9,6 @@ package object day17 {
   type JetStream = Seq[JetDirection]
 
   type Shape = Seq[String]
-
   val shapes = Seq(
     Seq(
       ".......",
@@ -42,4 +41,7 @@ package object day17 {
       "..##..."
     )
   )
+  val shapeHeight = 4
+
+  val chamberTopHeight = 7
 }
