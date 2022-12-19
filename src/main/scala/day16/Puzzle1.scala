@@ -16,8 +16,6 @@ object Puzzle1 extends App {
       u <- valves
       v <- u.tunnels
     } distances((u.name, v)) = 1
-    for (v <- valves)
-      distances((v.name, v.name)) = 0
     for {
       k <- valves
       i <- valves
@@ -25,11 +23,7 @@ object Puzzle1 extends App {
       if distances((i.name, j.name)) > distances((i.name, k.name)).toLong + distances((k.name, j.name))
     } distances((i.name, j.name)) = distances((i.name, k.name)) + distances((k.name, j.name))
 
-    distances.groupMapReduce { case ((from, _), _) => from } {
-      // remove path to itself
-      case ((from, to), distance) if from != to => Map(to -> distance)
-      case _                                    => Map.empty[ValveName, Int]
-    }(_ ++ _)
+    distances.groupMapReduce { case ((from, _), _) => from } { case ((_, to), distance) => Map(to -> distance) }(_ ++ _)
   }
 
   private def simulate(valves: Seq[Valve]): Int = {
@@ -105,5 +99,4 @@ object Puzzle1 extends App {
       .sum
     pressureWithCurrentFlowRate + maxAdditionalPressureReleased
   }
-
 }
