@@ -1,6 +1,7 @@
 package io.github.avapl
 package day21.puzzle1
 
+import day21.{Monkey, OperationMonkey, ValueMonkey}
 import util.InputParser
 import util.InputParser._
 
