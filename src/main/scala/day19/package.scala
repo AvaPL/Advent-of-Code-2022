@@ -1,6 +1,7 @@
 package io.github.avapl
 
 package object day19 {
+
   case class RobotCost(ore: Int, clay: Int, obsidian: Int)
 
   case class Blueprint(
@@ -107,6 +108,7 @@ package object day19 {
     maxGeodes
   }
 
+  // Not really efficient, can be optimized further
   private def calculateUpperBound(geodes: Int, geodesProduction: Int, minutesRemaining: Int) =
     geodes + Iterator.from(geodesProduction).take(minutesRemaining).sum
 
