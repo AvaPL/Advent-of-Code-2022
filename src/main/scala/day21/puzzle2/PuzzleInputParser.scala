@@ -82,14 +82,8 @@ object PuzzleInputParser extends InputParser[Seq[Monkey]](day = 21) {
       case "/" => s"$right: $left / $value"
     }
 
-  private def replaceRootMonkeys(rootRightMonkey: String, rootLeftMonkey: String)(operations: Seq[String]) = {
-    val (from, to) =
-      if (operations.exists(_.startsWith(rootLeftMonkey)))
-        (rootRightMonkey, rootLeftMonkey)
-      else
-        (rootLeftMonkey, rootRightMonkey)
-    operations.map(_.replace(from, to))
-  }
+  private def replaceRootMonkeys(rootRightMonkey: String, rootLeftMonkey: String)(operations: Seq[String]) =
+    operations.map(_.replace(rootRightMonkey, rootLeftMonkey))
 
   private def parseMonkey(line: String) =
     line match {

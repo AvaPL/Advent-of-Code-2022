@@ -9,7 +9,7 @@ package object day16 {
 
   case class Valve(name: ValveName, flowRate: Int, tunnels: Set[ValveName])
 
-  def floydWarshall(valves: Seq[Valve]): Map[ValveName, Map[ValveName, Int]] = {
+  def floydWarshall(valves: Seq[Valve]): ShortestPaths = {
     // https://en.wikipedia.org/wiki/Floyd–Warshall_algorithm
     val distances = mutable.Map.empty[(ValveName, ValveName), Int].withDefaultValue(Int.MaxValue)
     for {
