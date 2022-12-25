@@ -11,5 +11,24 @@ package object day22 {
   case object CounterClockwise extends Rotation
   case object Clockwise extends Rotation
 
+  val emptyTile = ' '
+  val openTile = '.'
+
   case class Position(row: Int, column: Int)
+
+  sealed abstract class Direction(val rowDirection: Int, val columnDirection: Int)
+  case object Up extends Direction(-1, 0)
+  case object Down extends Direction(1, 0)
+  case object Left extends Direction(0, -1)
+  case object Right extends Direction(0, 1)
+
+  def calculateScore(position: Position, direction: Direction): Int =
+    1000 * (position.row + 1) + 4 * (position.column + 1) + {
+      direction match {
+        case Right => 0
+        case Down  => 1
+        case Left  => 2
+        case Up    => 3
+      }
+    }
 }

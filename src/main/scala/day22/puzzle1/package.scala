@@ -2,9 +2,18 @@ package io.github.avapl
 package day22
 
 package object puzzle1 {
-  sealed abstract class Direction(val rowDirection: Int, val columnDirection: Int)
-  case object Up extends Direction(-1, 0)
-  case object Down extends Direction(1, 0)
-  case object Left extends Direction(0, -1)
-  case object Right extends Direction(0, 1)
+
+  implicit class Rotate(direction: Direction) {
+    def rotate(rotation: Rotation): Direction =
+      (direction, rotation) match {
+        case (Up, Clockwise)           => Right
+        case (Up, CounterClockwise)    => Left
+        case (Down, Clockwise)         => Left
+        case (Down, CounterClockwise)  => Right
+        case (Left, Clockwise)         => Up
+        case (Left, CounterClockwise)  => Down
+        case (Right, Clockwise)        => Down
+        case (Right, CounterClockwise) => Up
+      }
+  }
 }
