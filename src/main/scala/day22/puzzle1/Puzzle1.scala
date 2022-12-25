@@ -1,5 +1,7 @@
 package io.github.avapl
-package day22
+package day22.puzzle1
+
+import day22._
 
 import scala.annotation.tailrec
 import scala.math.floorMod
