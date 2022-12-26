@@ -8,8 +8,8 @@ package object day22 {
   case class Forward(steps: Int) extends Movement
 
   sealed trait Rotation extends Movement
-  case object CounterClockwise extends Rotation
   case object Clockwise extends Rotation
+  case object CounterClockwise extends Rotation
 
   val emptyTile = ' '
   val openTile = '.'
@@ -34,13 +34,13 @@ package object day22 {
   case object Left extends Direction(0, -1)
   case object Right extends Direction(0, 1)
 
-  def calculateScore(position: Position, direction: Direction): Int =
-    1000 * (position.row + 1) + 4 * (position.column + 1) + {
-      direction match {
-        case Right => 0
-        case Down  => 1
-        case Left  => 2
-        case Up    => 3
-      }
+  def calculateScore(position: Position, direction: Direction): Int = {
+    val directionScore = direction match {
+      case Right => 0
+      case Down  => 1
+      case Left  => 2
+      case Up    => 3
     }
+    1000 * (position.row + 1) + 4 * (position.column + 1) + directionScore
+  }
 }
