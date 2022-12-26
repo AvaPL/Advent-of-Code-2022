@@ -21,11 +21,13 @@ object Puzzle1 extends App {
     movement match {
       case rotation: Rotation => (position, direction.rotate(rotation))
       case Forward(0)         => (position, direction)
-      case Forward(steps)     => move(newPosition(position, direction), direction, Forward(steps - 1))
+      case Forward(steps) =>
+        val newPosition = stepForward(position, direction)
+        move(newPosition, direction, Forward(steps - 1))
     }
   }
 
-  private def newPosition(position: Position, direction: Direction) = {
+  private def stepForward(position: Position, direction: Direction) = {
     val row = newPositionRow(position, direction)
     val column = newPositionColumn(position, direction)
     if (board(row)(column) == openTile) Position(row, column)
